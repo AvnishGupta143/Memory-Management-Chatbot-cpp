@@ -95,7 +95,7 @@ void ChatLogic::LoadAnswerGraphFromFile(std::string filename)
                     if (type->second == "NODE")
                     {
                         // check if node with this ID exists already
-                        auto newNode = std::find_if(_nodes.begin(), _nodes.end(), [&id](std::unique_ptr<GraphNode> &node) { return node->GetID() == id; });
+                        auto newNode = std::find_if(_nodes.begin(), _nodes.end(), [&id](std::unique_ptr<GraphNode>& node) { return node->GetID() == id; });
 
                         // create new element if ID does not yet exist
                         if (newNode == _nodes.end())
@@ -173,13 +173,13 @@ void ChatLogic::LoadAnswerGraphFromFile(std::string filename)
 
     // add chatbot to graph root node
     ChatBot chatBot("../images/chatbot.png");
-
+    
+    SetChatbotHandle(&chatBot); // update _chatBot for chatLogic 
     // add pointer to chatlogic so that chatbot answers can be passed on to the GUI
     chatBot.SetChatLogicHandle(this);
     
     chatBot.SetRootNode(rootNode);
 
-    _chatBot = &chatBot;
 
     rootNode->MoveChatbotHere(std::move(chatBot));
 }

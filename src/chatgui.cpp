@@ -110,8 +110,7 @@ END_EVENT_TABLE()
 ChatBotPanelDialog::ChatBotPanelDialog(wxWindow *parent, wxWindowID id)
     : wxScrolledWindow(parent, id)
 {
-    std::cout << "Called ChatBotPanelDialog Constructor" << std::endl;
-
+    std::cout << "ChatBotPanelDialog Constructor" << std::endl;
     // sizer will take care of determining the needed scroll size
     _dialogSizer = new wxBoxSizer(wxVERTICAL);
     this->SetSizer(_dialogSizer);
@@ -187,6 +186,7 @@ void ChatBotPanelDialog::render(wxDC &dc)
 ChatBotPanelDialogItem::ChatBotPanelDialogItem(wxPanel *parent, wxString text, bool isFromUser)
     : wxPanel(parent, -1, wxPoint(-1, -1), wxSize(-1, -1), wxBORDER_NONE)
 {
+    std::cout << "new ChatBotPanelDialogItem" << std::endl;
     // retrieve image from chatbot
     wxBitmap *bitmap = isFromUser == true ? nullptr : ((ChatBotPanelDialog*)parent)->GetChatLogicHandle()->GetImageFromChatbot(); 
 
